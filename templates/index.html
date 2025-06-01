@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>songai – vibe playlist generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center p-4">
+
+<div class="bg-white p-10  max-w-md w-full text-center space-y-8">
+
+    <div class="flex justify-center items-center space-x-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" class="w-10 h-10" alt="Spotify">
+        <span class="text-2xl">🎶</span>
+    </div>
+
+    <h1 class="text-xl font-semibold text-gray-800">
+        Tell us a specific vibe, and <span class="text-green-600 font-bold">songai</span> will generate a playlist
+    </h1>
+
+    <form method="POST" action="/" id="form" class="flex rounded-full border border-gray-300 overflow-hidden shadow-md">
+        <input
+                type="text"
+                name="taste"
+                placeholder="e.g. 'foggy forest fairycore'"
+                class="flex-1 px-4 py-2 focus:outline-none"
+                required
+        >
+        <button type="submit" class="bg-white text-black px-4">🔍</button>
+    </form>
+
+</div>
+<!-- Loading overlay -->
+<div id="loadingOverlay" class="fixed inset-0 bg-white bg-opacity-90 z-50 hidden flex flex-col items-center justify-center">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-black border-opacity-70"></div>
+    <p class="mt-4 text-gray-700 text-lg">Generating your playlist...</p>
+</div>
+
+<script>
+    const form = document.querySelector("form");
+    const overlay = document.getElementById("loadingOverlay");
+
+    form.addEventListener("submit", () => {
+      overlay.classList.remove("hidden");
+    });
+</script>
+
+</body>
+</html>
